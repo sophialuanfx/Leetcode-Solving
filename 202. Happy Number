@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isHappy(int n) {
+        //base case
+        if(n == 1){
+            return true;
+        }else if(n==4){
+            return false;
+        }
+        //not sure why equal 4 is unhappy number
+        int sum=0;
+        //System.out.print(" loop start: ");
+        // calculate the sum for sqr n
+        while(n>=1){
+            sum += Math.pow((n%10),2);
+            n=n/10;
+            
+        }
+        //System.out.print(sum+ " ");
+        //recursive
+        return isHappy(sum);
+
+    }
+}
