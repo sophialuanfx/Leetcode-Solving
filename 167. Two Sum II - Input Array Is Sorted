@@ -1,0 +1,22 @@
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        //use two pointer low & high
+        //sorted array
+        int low=0, high= numbers.length-1;
+        int arr[] =new int[2];
+        for(int i=0; i<numbers.length; i++){
+            if(numbers[low]+numbers[high]==target){
+                arr[0]=low+1;
+                arr[1]=high+1;
+                //return arr;
+            }else if(numbers[low]+numbers[high]>target){
+            //sum > target change high
+                high--;
+            }else{
+            //sum < target change low
+                low++;
+            }
+        }
+        return arr;
+    }
+}
