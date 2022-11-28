@@ -1,0 +1,24 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+      //count total 0
+        int count=0;
+        for(int i: nums){
+            if(i==0){
+                count++;
+            }
+        }
+        int start=0,end=0;
+        //two pointer
+        while(start<nums.length){
+            //move end only start != 0;
+            if(nums[start]!=0){
+                nums[end]=nums[start];
+                end++;
+            }
+            start++;
+        }
+        for(int i=nums.length-count;i<nums.length;i++){
+            nums[i]=0;
+        }
+    }
+}
