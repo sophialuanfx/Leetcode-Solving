@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<Character>(); //FILO
+        for(char i: s.toCharArray()){
+            if(i=='('){
+                stack.add(')');
+            }else if(i=='{'){
+                stack.add('}');
+            }else if(i=='['){
+                stack.add(']');
+            }else if(stack.isEmpty() || stack.pop() != i){ //remove top last in
+                return false;
+            }
+        }
+        if(stack.size()==0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
