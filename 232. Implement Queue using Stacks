@@ -16,7 +16,7 @@ class MyQueue {
     
     public int peek() { //use s2 reverse the s1
         if(s2.isEmpty()){
-            while(!s1.isEmpty()){
+            while(!s1.isEmpty()){ 
                s2.push(s1.pop());  
             }
         }
