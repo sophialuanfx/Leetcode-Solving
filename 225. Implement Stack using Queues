@@ -15,7 +15,7 @@ class MyStack {//LIFO
     public int pop() {
         return q1.poll();
     }
-    
+     
     public int top() {
         return q1.peek();       
     }
