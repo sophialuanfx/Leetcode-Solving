@@ -1,0 +1,77 @@
+Google Doc: https://docs.google.com/document/d/13RFT94xPZ3NDm6orfk9jay_UOfIsjBLj47wi-lVDNnY/edit?usp=sharing
+
+HTML CSS：
+  1. Explain your understanding of the box model?
+    Use to do design and layout. The CSS box model is a box that wraps around every HTML element. 
+    It consists of: margins, borders, padding, and the actual content.
+    <img>
+    
+  2. What is CSS selector specificity and how does it work?
+    CSS selector specificity is when there are two or more CSS rules that point to the same element, the selector with the highest specificity value will be used, and its style declaration will be applied to that HTML element.
+    How did it work:
+    <img>
+    
+  3. What are the differences among these <script>, <script async> and <script defer>?
+    <script>: the browser will execute the script right a way, indesded to be continue to build the DOM.
+    <script async>:  like defer, script non-blocking. But async means the  script is completely independent,  fully independent script that runs when loaded. (DOMContentLoaded event可前可后)
+    <script defer>:  Tells the browser not to wait for the script, will continue to process the HTML, build DOM. script  execute when the DOM is ready, （DOMContentLoaded event 前）
+  4. What is progressive rendering?
+    Is the technique of sequentially rendering portions of a webpage in the server and streaming it to the client in parts without waiting for the whole page to rendered.
+    
+  5. Describe the difference between a cookie, sessionStorage and localStorage.
+    Only read on client-side:
+      localStorage： store data on the client’s computer， no expiration date.
+      sessionStorage:stores data only for a session, data is cleared when the page session ends， web closed.
+    server-side reading 也可client：
+      Cookie：Stores data that has to be sent back to the server 	
+
+JavaScript：
+  Explain event delegation：
+    A pattern to handle events efficiently, It is an event-handling pattern that allows you to handle events at a higher level. 用div给到button click event。好处：create fewer event listeners with similar logic.
+    <img>
+  what is this in JavaScript
+    “This” keyword refers to an object that is executing the current piece of code. It references the object that is executing the current function. If the function being referenced is a regular function, “this” references the global object.  If the function that is being referenced is a method in an object, “this” references the object itself.
+
+  how does prototypal inheritance work?
+    
+
+  What’s the difference between a variable that is: null, undefined or undeclared? How would you go about checking for any of these states?
+    Since variable not been declared
+    undeclared： when the variable has not been created
+    Use console.log();’ and ‘type of’ get follow
+    undefined： when the variable is declared, but does not have a value
+    null： when the variable is declared, and has a value of nothing, the absence of a value
+
+  What is a closure?
+    A closure gives you access to an outer function's scope from an inner function.
+
+
+
+
+OOP:
+Inheritance
+public, private
+protected
+Database: 
+Left join, right join, full join
+Primary key, unique key
+Css:
+Selector: selector by id by element
+How to override in line styling: import important
+React:
+What are hooks
+UseEffect(
+  Function test(){
+}, [{name}]
+)
+Every time name changes, it will rerender
+Js: 
+using let, var or const?
+Double equal, triple equal, => exercise about that
+Passed by value, passed by reference
+Anonymous function
+Await, asynchronous
+
+
+
+
