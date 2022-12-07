@@ -13,19 +13,40 @@
  *     }
  * }
  */
+//  import java.util.LinkedList;
 class Solution {
-   
-    public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> list=new LinkedList<Integer>();    
-        traversal(list, root);
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> list=new LinkedList<Integer>();
+        //postorder<left><right><root>
+        //iterater
+        if(root == null) return list;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()) { 
+            TreeNode curr = stack.pop();
+            list.add(0,curr.val); //add value to front
+            if(curr.left!=null) {
+              stack.push(curr.left); //push left first
+            }
+            if(curr.right!=null) {
+               stack.push(curr.right);  //right after
+            }
+        }
+
+        // recurisve(list,root);
         return list;
     }
-    public void traversal(List<Integer> list, TreeNode root){
-        if(root==null){
-            return;
-        }
-         list.add(root.val);
-         traversal(list,root.left);
-         traversal(list, root.right);
-    }
+    
+    //recurisve
+    //  public void recurisve(List<Integer> list, TreeNode root){
+    //      //base case
+    //      if(root==null){
+    //         return;
+    //      }
+    //      recurisve(list, root.left);
+    //      recurisve(list, root.right);
+    //      //add value in to the list
+    //      list.add(root.val);
+    //  }
+
 }
