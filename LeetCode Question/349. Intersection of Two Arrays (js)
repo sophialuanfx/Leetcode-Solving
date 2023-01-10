@@ -1,0 +1,32 @@
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersection = function(nums1, nums2) {
+    //method 1
+    // let newArray=[];
+    // let pointer1=0;
+    // let pointer2=0;
+    // nums1.sort(function(a,b) {return a-b});
+    // nums2.sort(function(a,b) {return a-b});
+    // while(pointer1< nums1.length && pointer2<nums2.length){
+    //     if(nums1[pointer1]===nums2[pointer2]){
+    //         if(!newArray.includes(nums1[pointer1])){
+    //             newArray.push(nums1[pointer1]);
+    //         }
+    //after compare pointer also need to add to next
+    //         pointer1++;
+    //         pointer2++;
+    //     }else if(nums1[pointer1]<nums2[pointer2]){
+    //         pointer1++;
+    //     }else{
+    //         pointer2++;
+    //     }
+    // }
+    // return newArray;
+
+    //method 2;
+    let newSet =new set(nums1);
+    return [...new Set(nums2.filter(num => setNum1.has(num)))];
+};
