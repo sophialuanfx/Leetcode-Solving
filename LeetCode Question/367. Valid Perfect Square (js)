@@ -1,0 +1,23 @@
+/**
+ * @param {number} num
+ * @return {boolean}
+ */
+var isPerfectSquare = function(num) {
+    if(num===1){
+        return true;
+    }
+    let start=0;
+    let end=num;
+    while(start<=end){
+        let halfNum= Math.floor((end+start)/2);
+        let powNum=Math.pow(halfNum,2);
+        if(powNum===num){
+            return true;
+        }else if(powNum < num){
+            start=halfNum+1;
+        }else{
+            end=halfNum-1;
+        }
+    }
+    return false;
+};
