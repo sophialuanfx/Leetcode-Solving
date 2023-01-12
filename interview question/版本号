@@ -1,0 +1,30 @@
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+function compare(versionA, versionB){
+    let arrayA = versionA.split(".");
+    let arrayB = versionB.split(".");
+    let posA=0, posB=0;
+    while(posA<3&&posB<3){
+        if(arrayA[posA]==arrayB[posB]){
+            posA++;
+            posB++;
+        }else if(arrayA[posA]< arrayB[posB]){
+            console.log(-1);
+            return;
+        }else{
+            console.log(1);
+            return;
+        }
+    }
+    console.log(0);
+}
+
+compare('12.1.0', '12.0.9')
+// 1, meaning first one is greater
+
+compare('12.1.0', '12.1.2')
+// -1, meaning latter one is greater
+
+compare('5.0.1', '5.0.1')
+// 0, meaning they are equal.
+// console.log("Welcome to Programiz!");
