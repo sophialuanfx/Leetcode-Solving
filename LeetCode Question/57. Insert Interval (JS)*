@@ -1,0 +1,29 @@
+/**
+ * @param {number[][]} intervals
+ * @param {number[]} newInterval
+ * @return {number[][]}
+ */
+var insert = function(intervals, newInterval) {
+    let start=0, end=1;
+    let insert=[];
+    // let subInsert=[];
+    for(let subInter of intervals){
+        //compare the subnet smaller than newInterval just add in the final
+        if(subInter[1]<newInterval[start]){
+            insert.push(subInter);
+
+        //compare the subnet greater than newInterval just add in the final
+        }else if(subInter[0]>newInterval[end]){
+            //push the overlaps interval before add the greater value
+            insert.push(newInterval);
+            newInterval= subInter;
+        }else{
+            //looks the exp2 [3,10] 10 is also include, therefore update the min and max to deal with the overlap
+            newInterval[start]=Math.min(newInterval[start],subInter[0]);
+            newInterval[end]=Math.max(newInterval[end],subInter[1]);
+        }
+    }
+    //dont not forget the last subInter that =newInterval
+    insert.push(newInterval);
+    return insert;
+};
