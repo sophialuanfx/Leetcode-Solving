@@ -1,0 +1,26 @@
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isHappy = function(n) {
+    let slow=n;
+    let fast= getNext(n);
+    while(fast!=1&&fast!=slow){
+        slow=getNext(slow);
+        fast=getNext(getNext(fast));
+        console.log(fast + " "+ slow);
+    }
+    return fast==1;
+};
+
+var getNext = function(number){
+    let sum=0;
+    while(number>0){
+        let digit= Math.floor(number%10);
+        sum += digit*digit;
+        console.log("before "+ number);
+        number= Math.floor(number/10);
+        console.log(" "+ number);
+    }
+    return sum;
+}
