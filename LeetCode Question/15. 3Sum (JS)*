@@ -1,0 +1,33 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function(nums) {
+    nums.sort(function(a,b){return a-b});
+    let sum3=[];
+    for(let i=0; i<nums.length;i++){
+        let start=i+1, end=nums.length-1;
+        //to check if there is same number next to wach other 
+        if (i > 0 && nums[i] === nums[i - 1]) continue;
+        //not equal
+        while(start<end){
+            let total=nums[i]+nums[start]+nums[end];
+            if(total==0){
+                //can push all array 
+                sum3.push([nums[i],nums[start],nums[end]]);
+
+                //make sure the same number not occure
+                while (nums[start] === nums[start + 1]) start++;
+				while (nums[end] === nums[end - 1]) end--;
+                //continue to same i and reast value
+                start++;
+                end--;
+            }else if(total>0){
+                end--;
+            }else{
+                start++;
+            }
+        }
+    }
+    return sum3;
+};
