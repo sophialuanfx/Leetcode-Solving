@@ -1,0 +1,26 @@
+/**
+ * @param {number[]} fruits
+ * @return {number}
+ */
+var totalFruit = function(fruits) {
+//js hashmap
+const hashMap = new Map();
+    let left = 0, maxLen = 0;
+  for(let right=0; right<fruits.length;right++){
+  //check java is able to use this or
+      hashMap.set(fruits[right], hashMap.get(fruits[right])+1||0);
+      //u can have one more temp basket
+      while(hashMap.size>2){
+      //if fruit is only one delete it 
+          if(hashMap.get(fruits[left])==0){
+              hashMap.delete(fruits[left]);
+          }else{
+              hashMap.set(fruits[left],hashMap.get(fruits[left])-1);
+          }
+          left++;
+      }
+      //use this futuer
+    maxLen=Math.max(maxLen, right-left+1);
+  }
+  return maxLen;
+};
