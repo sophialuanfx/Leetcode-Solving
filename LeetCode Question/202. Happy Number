@@ -21,3 +21,31 @@ class Solution {
 
     }
 }
+
+//method 2 use this one
+class Solution {
+    public boolean isHappy(int n) {
+    //can not be on same position fast is next to it
+        int fast= getNext(n);
+        int slow=n;
+        //two pointer check is infinty loop or not
+        while(fast!=1&&fast!=slow){
+        //slow is one number above
+            slow=getNext(slow);
+            //faster is two number above if only one getNext, there will be always one number infront
+            //int fast= getNext(n); this code is just place the fast number infront slow not in loop
+            fast=getNext(getNext(fast));
+        }
+        return fast==1;
+    }
+    
+    //get the next number pow of each digit
+    public int getNext(int n){
+        int totalSum=0;
+        while(n>0){
+            totalSum+= Math.pow((n%10),2);
+            n=n/10;
+        }
+        return totalSum;
+    }
+}
