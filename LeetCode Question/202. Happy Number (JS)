@@ -22,5 +22,5 @@ var getNext = function(number){
         number= Math.floor(number/10);
         console.log(" "+ number);
     }
-    return sum;
+    return sum; 
 }
