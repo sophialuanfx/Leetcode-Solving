@@ -1,0 +1,46 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        if(lists.length==0){
+            return null;
+        }
+        //priorityQueue add Lambada beacue it cannot sort listnode
+        PriorityQueue<ListNode> pQueue = new PriorityQueue<ListNode>(
+            lists.length,(a,b)->(a.val-b.val)
+        );
+        //dummy head is null when is -1
+        ListNode dummy =new ListNode(-1);
+        ListNode p =dummy;
+        //add each listNode[] head into pq
+        for(ListNode head : lists){
+            if(head!=null){
+                pQueue.add(head);
+            }
+        }
+
+        //to chech isEmpty()!
+        while(!pQueue.isEmpty()){
+            //poll the smallest
+            ListNode temp= pQueue.poll();
+            //add temp into new listnode
+            p.next=temp;
+            //if the head is poll there will be no next can link to
+            // therefor add head.next into pq to contiune link the sub list            
+            if(temp.next!=null){
+                pQueue.add(temp.next);
+            }
+            p=p.next;
+        }
+        //return null.next
+        return dummy.next;
+    }
+}
