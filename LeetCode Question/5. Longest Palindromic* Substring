@@ -1,0 +1,29 @@
+class Solution {
+    public String longestPalindrome(String s) {
+        String str="";
+        for(int i=0; i<s.length();i++){
+
+            //compare each char from center to left and right is palindrome
+            String s1=palindrome(s,i,i);
+            //i+1 due to the case of two same letter together at center
+            String s2=palindrome(s,i,i+1);
+
+            //compare the s1 s2 which is longer
+            str= (str.length()<=s1.length())? s1:str;
+            str=(str.length()<=s2.length())? s2:str;
+        }
+        return str;
+    }
+    //check the string have palindromic or not
+    public String palindrome(String s, int l, int r){
+        //sine left bigger than 0, right smaller than length, left&&right is same char
+        //keep expand to both side
+        while(l>=0&&r<s.length()&&s.charAt(r)==s.charAt(l)){
+            l--;
+            r++;
+        }
+        //return the palindromic substring
+        //left inclusive, right exclusive
+        return s.substring(l+1,r);
+    }
+}
