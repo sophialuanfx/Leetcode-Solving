@@ -1,0 +1,47 @@
+class Solution {
+    public int[] corpFlightBookings(int[][] bookings, int n) {
+        int[] finalBook =new int[n];
+        //object value Difference
+        Difference finalRes= new Difference(finalBook);
+        for(int[] booking : bookings){
+            int i= booking[0]-1;
+            int j= booking[1]-1;
+            int value =booking[2];
+            finalRes.increment(i,j,value); //change value
+        }
+        return finalRes.result();
+    }
+    //class of doing 差分数组
+    class Difference{
+        private int[] diff;
+        //constracter no return type, need have same name as class name
+        public Difference(int[] nums){
+            diff=new int[nums.length];
+            diff[0]=nums[0];
+            //finish 差分数组建成
+            for(int i=1;i<nums.length;i++){
+                diff[i]=nums[i]-nums[i-1];
+            }
+        }
+
+        //deal with the changing value process
+        public void increment(int i, int j, int value){
+            //diff[i]+value, diff[j] -value=> value between diff[i,j] is all increased value 
+            diff[i]+=value;
+            //if j+1 >=length means all value after i is changing, no need to deal with the value after j
+            if(j+1<diff.length){
+                diff[j+1]-=value;
+            }
+        }
+        //return the changed value arr
+        public int[] result(){
+            int[] res=new int[diff.length];
+            res[0]=diff[0];
+            //reverse as the difference function 
+            for(int i=1;i<diff.length;i++){
+                res[i]=res[i-1]+diff[i];
+            }
+            return res;
+        }
+    }
+}
