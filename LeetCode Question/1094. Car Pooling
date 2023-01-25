@@ -1,0 +1,49 @@
+class Solution {
+    public boolean carPooling(int[][] trips, int capacity) {
+        int[] nums=new int[1001];
+        Difference df= new Difference(nums);
+        for (int[] trip : trips) {
+            int val = trip[0];
+            int i = trip[1];
+            //when passenger get off bus at this stop which means, not using capacity
+            int j = trip[2] - 1;
+            df.increment(i, j, val);
+        }
+        int[] res = df.result();
+        // System.out.print(res);
+        //be careful to the bus can never be overload moe than capaciry
+        for (int i = 0; i < res.length; i++) {
+            System.out.print(res[i]);
+            if (capacity < res[i]) {
+                //can not return ture; bc one is small returned and not check rest
+                return false;
+            }
+        }
+        return true;
+    }
+
+    class Difference {
+        private int[] diff;
+        public Difference(int[] nums){
+            diff=new int[nums.length];
+            diff[0]=nums[0];
+            for(int i=1;i<diff.length;i++){
+                diff[i]=nums[i]-nums[i-1];
+            }
+        }
+        public void increment(int left, int right, int value){
+            diff[left] += value;
+            if(right +1<diff.length){
+                diff[right+1]-=value;
+            }
+        }
+        public int[] result(){
+            int[] res= new int[diff.length];
+            res[0]=diff[0];
+            for(int i=1; i<diff.length;i++){
+                res[i]=diff[i]+res[i-1];
+            }
+            return res;
+        }
+    }
+}
