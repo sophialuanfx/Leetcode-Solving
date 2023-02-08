@@ -1,0 +1,36 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {void} Do not return anything, modify root in-place instead.
+ */
+var flatten = function(root) {
+    //base case void no return
+    if(!root){
+        return ;
+    }
+    //move to the last leaf
+    flatten(root.left);
+    flatten(root.right);
+
+    //temp saving for left node & right node
+    let leafLeft= root.left;
+    let leafRight=root.right;
+
+    //move left node to right and clean the left space
+    root.left=null;
+    root.right=leafLeft;
+
+    //move the root to the last right node
+    while(root.right){
+        root=root.right
+    }
+    //link the original right after the leafLeft 
+    root.right=leafRight;
+};
