@@ -1,0 +1,36 @@
+/**
+ * // Definition for a Node.
+ * function Node(val, left, right, next) {
+ *    this.val = val === undefined ? null : val;
+ *    this.left = left === undefined ? null : left;
+ *    this.right = right === undefined ? null : right;
+ *    this.next = next === undefined ? null : next;
+ * };
+ */
+
+/**
+ * @param {Node} root
+ * @return {Node}
+ */
+var connect = function(root) {
+    if(!root){
+        return null;
+    }
+    traverts(root.left, root.right);
+    function traverts(root1,root2){
+        if(!root1||!root2){
+            return;
+        }
+        //each node connecting
+        root1.next=root2;
+
+        //three method
+        //node 4 5
+        traverts(root1.left,root1.right);
+        //node 6 7
+        traverts(root2.left,root2.right);
+        //node 5 6
+        traverts(root1.right,root2.left);
+    }
+    return root;
+};
