@@ -1,0 +1,19 @@
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let maxProf=0;
+    let buy=Number.MAX_SAFE_INTEGER;
+    for(let i=0; i<prices.length;i++){
+        if(prices[i]<buy){
+           buy=prices[i];
+            continue;
+           }
+        let prof=prices[i]-buy;
+        if(prof>=0&&prof>=maxProf){
+            maxProf=prof;
+        }
+    }
+    return maxProf;
+};
