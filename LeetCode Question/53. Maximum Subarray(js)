@@ -1,0 +1,32 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+// var maxSubArray = function(nums) {
+//     let sum=0;
+//     let maxSum=Number.MIN_SAFE_INTEGER;
+//     for(let i of nums){
+//         sum+=i;
+//         if(sum>maxSum){
+//            maxSum=sum;
+//         }
+//         if(sum<=0){
+//             sum=0;
+//         }
+//     }
+//     return maxSum;
+// };
+
+var maxSubArray = function(nums) {
+    let sum=0;
+    let dp=new Array(nums.length);
+    dp[0]=nums[0];
+    for(let i=1; i<nums.length;i++){
+        dp[i]=Math.max(dp[i-1]+nums[i],nums[i]);
+    }
+    let res= Number.MIN_SAFE_INTEGER;
+    for(let i of dp){
+        res=Math.max(i,res);
+    }
+    return res;
+}
