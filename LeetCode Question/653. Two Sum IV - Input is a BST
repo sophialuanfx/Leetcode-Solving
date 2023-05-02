@@ -14,16 +14,41 @@
  * }
  */
 class Solution {
-    Set<Integer> set = new HashSet<Integer>();
+    //hash set
+    // Set<Integer> set = new HashSet<Integer>();
+    // public boolean findTarget(TreeNode root, int k) {
+    //     if(root==null){
+    //         return false;
+    //     }
+    //     if(set.contains(k-root.val)){
+    //         return true;
+    //     }
+    //      set.add(root.val);
+    //     return findTarget(root.left,k) || findTarget(root.right,k);
+        
+    // }
+
+    //recursive
     public boolean findTarget(TreeNode root, int k) {
+        return run(root,root,k);
+    }   
+    public boolean run(TreeNode root, TreeNode currentNode, int k) {
+        if(currentNode==null){
+            return false;
+        }
+        if(find(root,currentNode,k-currentNode.val)){
+            return true;
+        }
+        return run(root,currentNode.left,k)||run(root,currentNode.right,k);
+    }
+    public boolean find(TreeNode root, TreeNode currentNode, int val) {
         if(root==null){
             return false;
         }
-        if(set.contains(k-root.val)){
-            return true;
-        }
-         set.add(root.val);
-        return findTarget(root.left,k) || findTarget(root.right,k);
-        
+        if(val>root.val) return find(root.right,currentNode,val);
+        if(val<root.val) return find(root.left,currentNode,val);
+        else if(val==root.val) return currentNode!=root;
+
+        return false;
     }
 }
