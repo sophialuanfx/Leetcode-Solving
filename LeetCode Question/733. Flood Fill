@@ -1,0 +1,31 @@
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        int oldColor=image[sr][sc];
+        fill(image, sr,sc,color,oldColor);
+        return image;
+    }
+    public void fill(int[][] image,int x, int y, int color, int oldColor){
+        //不在area 不同color 退
+        if(!inArea(image,x,y)){
+            return ;
+        }
+        if(image[x][y]!=oldColor){
+            return ;
+        }
+        //已走过 choose
+        if(image[x][y]==-1){
+            return;
+        }
+        //防多走
+        image[x][y]=-1;
+        fill(image,x+1,y,color,oldColor);
+        fill(image,x-1,y,color,oldColor);
+        fill(image,x,y-1,color,oldColor);
+        fill(image,x,y+1,color,oldColor);
+        //改走过
+        image[x][y]=color;
+    }
+    public boolean inArea(int[][] image,int x, int y){
+        return x>=0&&y>=0&&x<image.length&&y<image[0].length;
+    }
+}
