@@ -1,0 +1,23 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        //base case
+        if(nums.length<=2){
+            return nums.length;
+        }   
+        int a=0, b =1, count=0;
+        while(b<nums.length){
+            if(nums[a]==nums[b]){
+                count++;
+            }else {
+                count=0;
+            }
+            //count duplicate more than three
+            if(count<=1){
+                nums[a+1] = nums[b];
+                a++;
+            }
+            b++;
+        }
+        return a+1;
+    }
+}
