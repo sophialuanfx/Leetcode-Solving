@@ -1,0 +1,29 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        if(prices.length<=1){
+            return 0;
+        }
+        int buy=10000, total=0, profit=0;
+        for(int i=0; i< prices.length;i++){
+            if(buy>prices[i]){
+                buy=prices[i];
+            }
+            int sell=prices[i]-buy;
+            //if profit higher then sell laster
+            if(sell>profit){
+                profit=sell;
+            }else{//if profit lower then sell it yesterday and buy it again
+                buy=prices[i];
+                total+=profit;
+                profit=0;//dont forget to add it into total profit
+            }
+        }
+        //bug fix 1.if total is 0 means if statment keep running 2.if total lower than total add profit
+        //means the last time didn't add into the total prices;
+        if(total<total+profit){
+            return profit+total;
+        }else{
+            return total;
+        }
+    }
+}
