@@ -1,0 +1,27 @@
+class Solution {
+    public void rotate(int[] nums, int k) {
+        if(k<nums.length){
+            moveArr(nums,k);
+        }else if(k>nums.length){
+           int times=k%nums.length;
+            moveArr(nums,times);
+        }
+    }
+    public void moveArr(int[] nums, int k){
+        //use queue bc FIFO, and we use countdown for loop
+        Queue<Integer>  queue=new LinkedList<>();
+        //careful with -1;
+        for(int i=nums.length-1;i>nums.length-k-1;i--){
+            queue.add(nums[i]);
+        }
+        //i>=0; countdown for loop therefore first moved first in
+        for(int i=nums.length-1;i>=0;i--){
+            if(i>k-1){
+                nums[i]=nums[i-k];
+            }else{
+                
+                nums[i]=queue.poll();
+            }
+        }
+    }
+}
